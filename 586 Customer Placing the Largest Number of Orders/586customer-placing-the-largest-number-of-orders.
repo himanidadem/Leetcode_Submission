@@ -1,0 +1,9 @@
+import pandas as pd
+
+def largest_orders(orders: pd.DataFrame) -> pd.DataFrame:
+    #groupby and get counts df
+    #find the customer with max count from new df
+    counts=orders.groupby('customer_number').size().reset_index(name='order_counts')
+    max_customer=counts[counts['order_counts']==counts['order_counts'].max()]
+    return max_customer[['customer_number']]
+    
