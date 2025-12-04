@@ -1,0 +1,8 @@
+import pandas as pd
+
+def game_analysis(activity: pd.DataFrame) -> pd.DataFrame:
+    activity.rename(columns={'event_date':'first_login'},inplace=True)
+    df=activity.groupby('player_id',as_index=False)
+    minimum=df['first_login'].min()
+    return minimum
+
